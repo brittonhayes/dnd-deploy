@@ -2,7 +2,7 @@
 import * as pulumi from '@pulumi/pulumi';
 import * as aws from '@pulumi/aws';
 import * as awsx from '@pulumi/awsx';
-import { Service, CDN } from '../lib/components';
+import { Service, CDN } from './components';
 
 const tags: aws.Tags = {
   owner: 'github.com/5e-bits',
