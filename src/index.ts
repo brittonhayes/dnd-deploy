@@ -2,7 +2,7 @@
 import * as pulumi from '@pulumi/pulumi';
 import * as aws from '@pulumi/aws';
 import * as awsx from '@pulumi/awsx';
-import { Service } from '../lib/components/service';
+import { Service, CDN } from '../lib/components';
 
 const tags: aws.Tags = {
   owner: 'github.com/5e-bits',
@@ -22,3 +22,11 @@ const service = new Service('dnd-api-service', {
   vpc: vpc,
   tags: tags,
 });
+
+const cdn = new CDN('dnd-cdn', {
+  loadbalancer: service.loadBalancer.loadBalancer,
+  tags: tags,
+});
+
+export const lbDomain = service.loadBalancer.loadBalancer.dnsName;
+export const cdnDomain = cdn.distribution.domainName;

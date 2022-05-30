@@ -1,3 +1,8 @@
 name: deploy
 runtime: nodejs
 description: Infrastructure as code for D&D 5e REST API.
+template:
+  config:
+    aws:region:
+      description: The AWS region to deploy into
+      default: us-east-1

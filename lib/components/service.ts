@@ -25,8 +25,7 @@ export class Service extends pulumi.ComponentResource {
 
     this.logGroup = new aws.cloudwatch.LogGroup('api-service-logs', {
       tags: properties.tags,
-      namePrefix: '/ecs/',
-      name: 'api-service-logs',
+      namePrefix: '/ecs/api-service-logs-',
       retentionInDays: 1,
     });
 
