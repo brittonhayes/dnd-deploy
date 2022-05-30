@@ -8,7 +8,7 @@ Deploying the application to AWS with [Pulumi](https://www.pulumi.com/).
 
 ```shell
 # Clone the repository
-gh repo clone 5e-bits/deploy
+gh repo clone brittonhayes/dnd-deploy
 
 # Install dependencies
 npm install
