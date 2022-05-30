@@ -20,24 +20,21 @@ export class CDN extends pulumi.ComponentResource {
       defaultCacheBehavior: {
         targetOriginId: properties.loadbalancer.arn,
         viewerProtocolPolicy: 'allow-all',
-        allowedMethods: ['GET', 'HEAD', 'OPTIONS'],
-        cachedMethods: ['GET', 'HEAD', 'OPTIONS'],
+        allowedMethods: ['GET', 'HEAD'],
+        cachedMethods: ['GET', 'HEAD'],
         forwardedValues: {
           cookies: { forward: 'none' },
-          queryString: true,
+          queryString: false,
         },
-        minTtl: 0,
       },
-      priceClass: 'PriceClass_100',
       origins: [
         {
           originId: properties.loadbalancer.arn,
-          originPath: '/*',
           domainName: properties.loadbalancer.dnsName,
           customOriginConfig: {
             httpPort: 80,
             httpsPort: 80,
-            originSslProtocols: ['TLSv1.2'],
+            originSslProtocols: ['TLSv1.2', 'TLSv1.1'],
             originProtocolPolicy: 'match-viewer',
           },
         },
